@@ -1,4 +1,4 @@
-package com.example.Back_Final_Analisis.application.usecase;
+package com.example.Back_Final_Analisis.application.usecase.UserUseCase;
 
 import com.example.Back_Final_Analisis.domain.model.User;
 import com.example.Back_Final_Analisis.domain.port.UserRepositoryPort;

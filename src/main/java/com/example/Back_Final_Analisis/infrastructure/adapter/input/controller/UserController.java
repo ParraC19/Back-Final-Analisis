@@ -1,8 +1,8 @@
 package com.example.Back_Final_Analisis.infrastructure.adapter.input.controller;
 
-import com.example.Back_Final_Analisis.application.usecase.CreateUserUseCase;
-import com.example.Back_Final_Analisis.application.usecase.GetAllUsersUseCase;
-import com.example.Back_Final_Analisis.application.usecase.GetUserByIdUseCase;
+import com.example.Back_Final_Analisis.application.usecase.UserUseCase.CreateUserUseCase;
+import com.example.Back_Final_Analisis.application.usecase.UserUseCase.GetAllUsersUseCase;
+import com.example.Back_Final_Analisis.application.usecase.UserUseCase.GetUserByIdUseCase;
 import com.example.Back_Final_Analisis.domain.model.User;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

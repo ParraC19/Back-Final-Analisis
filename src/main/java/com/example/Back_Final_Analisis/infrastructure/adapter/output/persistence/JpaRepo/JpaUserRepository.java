@@ -1,5 +1,6 @@
-package com.example.Back_Final_Analisis.infrastructure.adapter.output.persistence;
+package com.example.Back_Final_Analisis.infrastructure.adapter.output.persistence.JpaRepo;
 
+import com.example.Back_Final_Analisis.infrastructure.adapter.output.persistence.Entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

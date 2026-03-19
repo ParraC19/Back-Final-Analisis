@@ -1,7 +1,9 @@
-package com.example.Back_Final_Analisis.infrastructure.adapter.output.persistence;
+package com.example.Back_Final_Analisis.infrastructure.adapter.output.persistence.RepositoryAdapter;
 
 import com.example.Back_Final_Analisis.domain.model.User;
 import com.example.Back_Final_Analisis.domain.port.UserRepositoryPort;
+import com.example.Back_Final_Analisis.infrastructure.adapter.output.persistence.Entity.UserEntity;
+import com.example.Back_Final_Analisis.infrastructure.adapter.output.persistence.JpaRepo.JpaUserRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

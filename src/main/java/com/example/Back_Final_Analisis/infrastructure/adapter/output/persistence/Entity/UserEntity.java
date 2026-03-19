@@ -1,4 +1,4 @@
-package com.example.Back_Final_Analisis.infrastructure.adapter.output.persistence;
+package com.example.Back_Final_Analisis.infrastructure.adapter.output.persistence.Entity;
 
 import com.example.Back_Final_Analisis.domain.enums.Role;
 import jakarta.persistence.*;
