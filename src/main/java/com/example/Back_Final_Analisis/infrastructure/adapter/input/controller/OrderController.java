@@ -2,13 +2,14 @@ package com.example.Back_Final_Analisis.infrastructure.adapter.input.controller;
 
 import com.example.Back_Final_Analisis.application.usecase.OrderUseCase.CreateOrderUseCase;
 import com.example.Back_Final_Analisis.application.usecase.OrderUseCase.GetAllOrdersUseCase;
+import com.example.Back_Final_Analisis.application.usecase.OrderUseCase.GetOrderByIdUseCase;
 import com.example.Back_Final_Analisis.domain.model.Order;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.util.List;
 
@@ -19,10 +20,12 @@ public class OrderController {
 
     private final CreateOrderUseCase createOrderUseCase;
     private final GetAllOrdersUseCase getAllOrdersUseCase;
+    private final GetOrderByIdUseCase getOrderByIdUseCase;
 
-    public OrderController(CreateOrderUseCase createOrderUseCase, GetAllOrdersUseCase getAllOrdersUseCase) {
+    public OrderController(CreateOrderUseCase createOrderUseCase, GetAllOrdersUseCase getAllOrdersUseCase, GetOrderByIdUseCase getOrderByIdUseCase) {
         this.createOrderUseCase = createOrderUseCase;
         this.getAllOrdersUseCase = getAllOrdersUseCase;
+        this.getOrderByIdUseCase = getOrderByIdUseCase;
     }
 
     @Operation(summary = "Crear una nueva orden")
@@ -36,5 +39,11 @@ public class OrderController {
     @GetMapping
     public ResponseEntity<List<Order>> getAllOrders() {
         return ResponseEntity.ok(getAllOrdersUseCase.execute());
+    }
+
+    @Operation(summary = "Obtener detalle de una orden por ID")
+    @GetMapping("/{id}")
+    public ResponseEntity<Order> getOrderById(@PathVariable Long id) {
+        return ResponseEntity.ok(getOrderByIdUseCase.execute(id));
     }
 }

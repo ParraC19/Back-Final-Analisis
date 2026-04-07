@@ -1,6 +1,5 @@
 package com.example.Back_Final_Analisis.domain.model;
 
-import com.example.Back_Final_Analisis.domain.enums.Role;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,9 +28,6 @@ public class User {
     @NotBlank(message = "La contraseña es requerida")
     @Size(min = 6, max = 20, message = "La contraseña tiene que tener entre 6 y 20 caracteres")
     private String password;
-
-    @NotNull(message = "El rol es requerido")
-    private Role role;
 
     // Código único del vendedor, ejemplo: "VEN-001"
     @Size(max = 20, message = "El código de vendedor no puede exceder los 20 caracteres")
