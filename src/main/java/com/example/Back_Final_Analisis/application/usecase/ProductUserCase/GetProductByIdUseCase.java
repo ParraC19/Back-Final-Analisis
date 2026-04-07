@@ -5,15 +5,16 @@ import com.example.Back_Final_Analisis.domain.port.ProductRepositoryPort;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CreateProductUseCase {
+public class GetProductByIdUseCase {
 
     private final ProductRepositoryPort productRepositoryPort;
 
-    public CreateProductUseCase(ProductRepositoryPort productRepositoryPort) {
+    public GetProductByIdUseCase(ProductRepositoryPort productRepositoryPort) {
         this.productRepositoryPort = productRepositoryPort;
     }
 
-    public Product execute(Product product) {
-        return productRepositoryPort.save(product);
+    public Product execute(Long id) {
+        return productRepositoryPort.findById(id)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado con id: " + id));
     }
 }

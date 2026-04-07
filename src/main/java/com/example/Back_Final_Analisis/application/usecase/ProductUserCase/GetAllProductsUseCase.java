@@ -4,16 +4,18 @@ import com.example.Back_Final_Analisis.domain.model.Product;
 import com.example.Back_Final_Analisis.domain.port.ProductRepositoryPort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class CreateProductUseCase {
+public class GetAllProductsUseCase {
 
     private final ProductRepositoryPort productRepositoryPort;
 
-    public CreateProductUseCase(ProductRepositoryPort productRepositoryPort) {
+    public GetAllProductsUseCase(ProductRepositoryPort productRepositoryPort) {
         this.productRepositoryPort = productRepositoryPort;
     }
 
-    public Product execute(Product product) {
-        return productRepositoryPort.save(product);
+    public List<Product> execute() {
+        return productRepositoryPort.findAll();
     }
 }

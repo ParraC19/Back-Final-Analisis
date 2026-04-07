@@ -27,22 +27,22 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
 
     @Override
     public Optional<User> findByEmail(String email) {
-        return jpaUserRepository.findByEmail(email)
-                .map(this::mapToDomain);
+        return jpaUserRepository.findByEmail(email).map(this::mapToDomain);
+    }
+
+    @Override
+    public Optional<User> findByVendorCode(String vendorCode) {
+        return jpaUserRepository.findByVendorCode(vendorCode).map(this::mapToDomain);
     }
 
     @Override
     public List<User> findAll() {
-        return jpaUserRepository.findAll()
-                .stream()
-                .map(this::mapToDomain)
-                .toList();
+        return jpaUserRepository.findAll().stream().map(this::mapToDomain).toList();
     }
 
     @Override
     public Optional<User> findById(Long id) {
-        return jpaUserRepository.findById(id)
-                .map(this::mapToDomain);
+        return jpaUserRepository.findById(id).map(this::mapToDomain);
     }
 
     private UserEntity mapToEntity(User user) {
@@ -52,6 +52,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
                 .email(user.getEmail())
                 .password(user.getPassword())
                 .role(user.getRole())
+                .vendorCode(user.getVendorCode())
                 .build();
     }
 
@@ -62,6 +63,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
                 .email(userEntity.getEmail())
                 .password(userEntity.getPassword())
                 .role(userEntity.getRole())
+                .vendorCode(userEntity.getVendorCode())
                 .build();
     }
 }

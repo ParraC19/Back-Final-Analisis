@@ -2,10 +2,7 @@ package com.example.Back_Final_Analisis.infrastructure.adapter.output.persistenc
 
 import com.example.Back_Final_Analisis.domain.enums.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "users")
@@ -31,4 +28,7 @@ public class UserEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private Role role;
+
+    @Column(unique = true, length = 20)
+    private String vendorCode;
 }
