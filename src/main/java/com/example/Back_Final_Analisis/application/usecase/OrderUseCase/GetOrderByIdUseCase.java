@@ -15,6 +15,6 @@ public class GetOrderByIdUseCase {
 
     public Order execute(Long id) {
         return orderRepositoryPort.findById(id)
-                .orElseThrow(() -> new RuntimeException("Venta no encontrada con id: " + id));
+                .orElseThrow(() -> new RuntimeException("Pedido no encontrado con id: " + id));
     }
 }
