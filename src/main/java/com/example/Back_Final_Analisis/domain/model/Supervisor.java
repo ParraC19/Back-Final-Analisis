@@ -5,29 +5,30 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Seller {
+public class Supervisor {
 
     private Long id;
 
-    // Relación 1 a 1 con User (para login)
+    // Relación 1 a 1 con User
     @NotNull(message = "El usuario asociado es requerido")
     private Long userId;
 
     // Se rellena automáticamente desde User
     private String userName;
     private String userEmail;
-    private String vendorCode;
 
     @NotBlank(message = "El documento es requerido")
     private String documento;
 
-    @NotNull(message = "La tienda es requerida")
-    private Tiendas tienda;
+    // Un supervisor puede estar a cargo de múltiples tiendas
+    @NotEmpty(message = "Debe asignarse al menos una tienda")
+    private List<Tiendas> tiendasACargo;
 
     @NotNull(message = "La fecha de nacimiento es requerida")
     private LocalDate fechaDeNacimiento;

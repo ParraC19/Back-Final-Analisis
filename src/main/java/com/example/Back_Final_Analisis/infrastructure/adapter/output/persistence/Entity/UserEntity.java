@@ -1,5 +1,6 @@
 package com.example.Back_Final_Analisis.infrastructure.adapter.output.persistence.Entity;
 
+import com.example.Back_Final_Analisis.domain.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,4 +27,8 @@ public class UserEntity {
 
     @Column(unique = true, length = 20)
     private String vendorCode;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private Role role;
 }

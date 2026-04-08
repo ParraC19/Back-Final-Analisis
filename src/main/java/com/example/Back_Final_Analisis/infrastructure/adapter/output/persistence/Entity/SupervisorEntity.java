@@ -5,20 +5,20 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
-@Table(name = "sellers")
+@Table(name = "supervisors")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SellerEntity {
+public class SupervisorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Relación 1 a 1 con UserEntity
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false, unique = true)
     private UserEntity user;
@@ -26,9 +26,11 @@ public class SellerEntity {
     @Column(nullable = false, length = 50)
     private String documento;
 
+    @ElementCollection
+    @CollectionTable(name = "supervisor_tiendas", joinColumns = @JoinColumn(name = "supervisor_id"))
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 30)
-    private Tiendas tienda;
+    @Column(name = "tienda", length = 30)
+    private List<Tiendas> tiendasACargo;
 
     @Column(nullable = false)
     private LocalDate fechaDeNacimiento;
