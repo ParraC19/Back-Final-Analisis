@@ -1,6 +1,9 @@
 package com.example.Back_Final_Analisis.domain.model;
 
 import com.example.Back_Final_Analisis.domain.enums.Tiendas;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -12,6 +15,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Seller {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // Relación 1 a 1 con User (para login)

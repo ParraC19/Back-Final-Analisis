@@ -33,14 +33,24 @@ public class CreateSaleUseCase {
         sale.setVendorName(vendor.getName());
         sale.setVendorCode(vendor.getVendorCode());
 
-        // Enriquecer items con precio y calcular subtotales
+        // Enriquecer items con precio, validar stock y calcular subtotales
         List<Sale.SaleItem> enrichedItems = sale.getItems().stream().map(item -> {
             Product product = productRepositoryPort.findById(item.getProductId())
                     .orElseThrow(() -> new RuntimeException("Producto no encontrado con id: " + item.getProductId()));
 
+            if (product.getStock() < item.getQuantity()) {
+                throw new RuntimeException("Stock insuficiente para el producto '" + product.getName()
+                        + "'. Disponible: " + product.getStock() + ", solicitado: " + item.getQuantity());
+            }
+
             item.setProductName(product.getName());
             item.setUnitPrice(product.getPrice());
             item.setSubtotal(product.getPrice() * item.getQuantity());
+
+            // Descontar stock
+            product.setStock(product.getStock() - item.getQuantity());
+            productRepositoryPort.save(product);
+
             return item;
         }).toList();
 

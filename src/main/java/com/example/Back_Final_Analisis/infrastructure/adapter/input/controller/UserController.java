@@ -5,6 +5,8 @@ import com.example.Back_Final_Analisis.application.usecase.UserUseCase.GetAllUse
 import com.example.Back_Final_Analisis.application.usecase.UserUseCase.GetUserByIdUseCase;
 import com.example.Back_Final_Analisis.application.usecase.UserUseCase.GetVendorByCodeUseCase;
 import com.example.Back_Final_Analisis.domain.model.User;
+import com.example.Back_Final_Analisis.infrastructure.adapter.input.dto.CreateUserRequestDTO;
+import com.example.Back_Final_Analisis.infrastructure.adapter.input.dto.CreateUserResponseDTO;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,10 +37,10 @@ public class UserController {
         this.getVendorByCodeUseCase = getVendorByCodeUseCase;
     }
 
-    @Operation(summary = "Crear un nuevo usuario")
+    @Operation(summary = "Crear un nuevo usuario", description = "Crea el usuario y automáticamente su perfil de Vendedor o Supervisor según el rol")
     @PostMapping
-    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(createUserUseCase.execute(user));
+    public ResponseEntity<CreateUserResponseDTO> createUser(@Valid @RequestBody CreateUserRequestDTO request) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(createUserUseCase.execute(request));
     }
 
     @Operation(summary = "Listar todos los usuarios")
