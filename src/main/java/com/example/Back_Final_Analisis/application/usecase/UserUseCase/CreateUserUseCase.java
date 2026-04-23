@@ -45,16 +45,21 @@ public class CreateUserUseCase {
             throw new RuntimeException("Debes proporcionar 'supervisorInfo' para el rol SUPERVISOR.");
         }
 
-        // 1. Crear el User
+        // 1. Crear el User (sin vendorCode aún, se genera tras obtener el ID)
         User user = User.builder()
                 .name(request.getName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(request.getRole())
-                .vendorCode(request.getVendorCode())
                 .build();
 
         User savedUser = userRepositoryPort.save(user);
+
+        // Generar vendorCode automático basado en el ID
+        String prefix = request.getRole() == Role.VENDEDOR ? "VEN-" : "SUP-";
+        String autoCode = prefix + savedUser.getId();
+        savedUser.setVendorCode(autoCode);
+        savedUser = userRepositoryPort.save(savedUser);
 
         // 2. Crear perfil según rol
         Seller savedSeller = null;

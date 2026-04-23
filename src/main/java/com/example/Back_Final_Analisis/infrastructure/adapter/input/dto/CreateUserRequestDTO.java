@@ -27,9 +27,6 @@ public class CreateUserRequestDTO {
     @NotNull(message = "El rol es requerido")
     private Role role;
 
-    @Size(max = 20, message = "El código de vendedor no puede exceder los 20 caracteres")
-    private String vendorCode;
-
     // ── Datos del Seller (solo si role = VENDEDOR) ────────────────
     private SellerInfoDTO sellerInfo;
 
