@@ -1,14 +1,8 @@
 package com.example.Back_Final_Analisis.application.usecase.UserUseCase;
 
 import com.example.Back_Final_Analisis.domain.enums.Role;
-import com.example.Back_Final_Analisis.domain.model.Seller;
-import com.example.Back_Final_Analisis.domain.model.Supervisor;
 import com.example.Back_Final_Analisis.domain.model.User;
-import com.example.Back_Final_Analisis.domain.port.SellerRepositoryPort;
-import com.example.Back_Final_Analisis.domain.port.SupervisorRepositoryPort;
 import com.example.Back_Final_Analisis.domain.port.UserRepositoryPort;
-import com.example.Back_Final_Analisis.infrastructure.adapter.input.dto.CreateUserRequestDTO;
-import com.example.Back_Final_Analisis.infrastructure.adapter.input.dto.CreateUserResponseDTO;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 

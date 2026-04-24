@@ -5,8 +5,6 @@ import com.example.Back_Final_Analisis.application.usecase.UserUseCase.GetAllUse
 import com.example.Back_Final_Analisis.application.usecase.UserUseCase.GetUserByIdUseCase;
 import com.example.Back_Final_Analisis.application.usecase.UserUseCase.GetVendorByCodeUseCase;
 import com.example.Back_Final_Analisis.domain.model.User;
-import com.example.Back_Final_Analisis.infrastructure.adapter.input.dto.CreateUserRequestDTO;
-import com.example.Back_Final_Analisis.infrastructure.adapter.input.dto.CreateUserResponseDTO;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
