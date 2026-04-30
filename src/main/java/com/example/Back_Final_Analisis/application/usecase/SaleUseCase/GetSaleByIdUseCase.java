@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GetSaleByIdUseCase {
-
     private final SaleRepositoryPort saleRepositoryPort;
 
     public GetSaleByIdUseCase(SaleRepositoryPort saleRepositoryPort) {

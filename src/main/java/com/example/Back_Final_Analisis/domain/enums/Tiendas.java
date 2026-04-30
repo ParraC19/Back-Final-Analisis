@@ -8,5 +8,5 @@ public enum Tiendas {
     ESPRIT,
     AMERICAN_EAGLE,
     MANGO,
-    CARRERA,
+    CARRERA
 }

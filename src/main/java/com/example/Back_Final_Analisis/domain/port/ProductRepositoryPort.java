@@ -6,14 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepositoryPort {
-
-    Product save(Product product);
-
-    Optional<Product> findById(Long id);
-
     List<Product> findAll();
-
-    List<Product> findByBrand(String brand);
-
-    void deleteById(Long id);
+    Optional<Product> findById(Long id);
+    Product save(Product product);
 }

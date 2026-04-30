@@ -1,5 +1,7 @@
 package com.example.Back_Final_Analisis.infrastructure.adapter.output.persistence.Entity;
 
+import com.example.Back_Final_Analisis.domain.enums.SaleType;
+import com.example.Back_Final_Analisis.domain.enums.Tiendas;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,11 +29,19 @@ public class SaleEntity {
     @Column(length = 20)
     private String vendorCode;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private SaleType saleType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 30)
+    private Tiendas tienda;
+
+    @Column(length = 200)
+    private String address;
+
     @Column(nullable = false)
     private LocalDate saleDate;
-
-    @Column(nullable = false, length = 200)
-    private String address;
 
     @ElementCollection
     @CollectionTable(name = "sale_items", joinColumns = @JoinColumn(name = "sale_id"))
@@ -39,21 +49,4 @@ public class SaleEntity {
 
     @Column(nullable = false)
     private Double total;
-
-    @Embeddable
-    @Data
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class SaleItemEmbeddable {
-
-        private Long productId;
-
-        @Column(length = 100)
-        private String productName;
-
-        private Integer quantity;
-        private Double unitPrice;
-        private Double subtotal;
-    }
 }

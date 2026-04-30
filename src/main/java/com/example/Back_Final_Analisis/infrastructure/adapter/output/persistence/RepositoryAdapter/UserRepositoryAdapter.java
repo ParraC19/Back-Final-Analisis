@@ -52,6 +52,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
                 .email(user.getEmail())
                 .password(user.getPassword())
                 .vendorCode(user.getVendorCode())
+                .role(user.getRole())
                 .build();
     }
 
@@ -62,6 +63,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
                 .email(userEntity.getEmail())
                 .password(userEntity.getPassword())
                 .vendorCode(userEntity.getVendorCode())
+                .role(userEntity.getRole())
                 .build();
     }
 }

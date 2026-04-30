@@ -8,7 +8,6 @@ import java.util.List;
 
 @Service
 public class GetAllSalesUseCase {
-
     private final SaleRepositoryPort saleRepositoryPort;
 
     public GetAllSalesUseCase(SaleRepositoryPort saleRepositoryPort) {

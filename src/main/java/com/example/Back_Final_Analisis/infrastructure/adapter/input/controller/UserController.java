@@ -5,18 +5,18 @@ import com.example.Back_Final_Analisis.application.usecase.UserUseCase.GetAllUse
 import com.example.Back_Final_Analisis.application.usecase.UserUseCase.GetUserByIdUseCase;
 import com.example.Back_Final_Analisis.application.usecase.UserUseCase.GetVendorByCodeUseCase;
 import com.example.Back_Final_Analisis.domain.model.User;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-@Tag(name = "Controlador de Usuarios", description = "Gestión de usuarios del sistema")
+@Tag(name = "Usuarios", description = "Gestión de usuarios vendedores")
 public class UserController {
 
     private final CreateUserUseCase createUserUseCase;
@@ -24,18 +24,17 @@ public class UserController {
     private final GetUserByIdUseCase getUserByIdUseCase;
     private final GetVendorByCodeUseCase getVendorByCodeUseCase;
 
-    public UserController(
-            CreateUserUseCase createUserUseCase,
-            GetAllUsersUseCase getAllUsersUseCase,
-            GetUserByIdUseCase getUserByIdUseCase,
-            GetVendorByCodeUseCase getVendorByCodeUseCase) {
+    public UserController(CreateUserUseCase createUserUseCase,
+                          GetAllUsersUseCase getAllUsersUseCase,
+                          GetUserByIdUseCase getUserByIdUseCase,
+                          GetVendorByCodeUseCase getVendorByCodeUseCase) {
         this.createUserUseCase = createUserUseCase;
         this.getAllUsersUseCase = getAllUsersUseCase;
         this.getUserByIdUseCase = getUserByIdUseCase;
         this.getVendorByCodeUseCase = getVendorByCodeUseCase;
     }
 
-    @Operation(summary = "Crear un nuevo usuario")
+    @Operation(summary = "Registrar nuevo vendedor")
     @PostMapping
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
         return ResponseEntity.status(HttpStatus.CREATED).body(createUserUseCase.execute(user));
@@ -53,7 +52,7 @@ public class UserController {
         return ResponseEntity.ok(getUserByIdUseCase.execute(id));
     }
 
-    @Operation(summary = "Obtener vendedor por su código único")
+    @Operation(summary = "Obtener vendedor por código")
     @GetMapping("/vendor/{vendorCode}")
     public ResponseEntity<User> getVendorByCode(@PathVariable String vendorCode) {
         return ResponseEntity.ok(getVendorByCodeUseCase.execute(vendorCode));
